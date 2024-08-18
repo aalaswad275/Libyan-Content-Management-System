@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\links;
 use Illuminate\Http\Request;
 
 class LinksController extends Controller
@@ -12,6 +12,8 @@ class LinksController extends Controller
     public function index()
     {
         //
+        $link = links::all();
+        return view('panel.links.index', compact('link'));
     }
 
     /**

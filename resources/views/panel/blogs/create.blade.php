@@ -1,32 +1,29 @@
 @extends('layouts.test')
-@section('contnet')
 
-<form class="needs-validation" action="{{route(blog.store)}}" method="post">
-@csrf
-    <div class="form-row">
-      <div class="col-md-8 mb-3">
-        <label for="BlogTitle">{{__('Blog Title')}}</label>
-        <input type="text" class="form-control" id="BlogTitle"  required>
-        <div class="invalid-feedback"> {{__('Please Enter A valid title')}} </div>
-
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="Descripation">{{__('Mini Descripation')}}</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupPrepend"></span>
-          </div>
-          <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-          <div class="invalid-feedback"> Please choose a username. </div>
+@section('content')
+    <form method="post" action="/blogs">
+        @csrf
+        <div class="form-group row">
+        <label for="title" class="col-sm-3 col-form-label">{{__("Title")}}</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="title" id="title">
         </div>
-      </div>
-
-    </div>
-
-
-
-    <button class="btn btn-primary" type="submit">Submit form</button>
-
-
-</form>
+        </div>
+        
+        <div class="form-group row">
+        <label class="col-sm-3" for="body">Body</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" name="body" id="exampleFormControlTextarea1" rows="2"></textarea>
+        </div>
+        </div>
+        <div class="form-group mb-2">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <p style="color: red; font-style: italic;">{{$error}}</p>
+        @endforeach
+    
+    @endif
 @endsection
