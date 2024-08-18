@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Models\User;
+
 return new class extends Migration
 {
     /**
@@ -20,7 +22,9 @@ return new class extends Migration
             $table->text('description'); // description of the gallery
 
             $table->string('cover_image'); // path to the cover image of the gallery
-            $table->integer('user_id')->unsigned(); // foreign key referencing the users table
+            $table->foreignIdFor(User::class)->constrained(
+                table: 'users', indexName: 'gallery_user_id'
+            )->cascadeOnDelete(); //->integer('user_id')->unsigned(); // foreign key referencing the users table
             
             $table->timestamps();
             // add foreign key constraint

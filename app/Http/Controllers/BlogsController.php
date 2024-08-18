@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Blogs;
 use Illuminate\Http\Request;
 
 class BlogsController extends Controller
@@ -12,6 +12,8 @@ class BlogsController extends Controller
     public function index()
     {
         //
+        $blog = Blogs::all();
+        return view('panel.blogs.index', compact('blog'));
     }
 
     /**
@@ -19,7 +21,7 @@ class BlogsController extends Controller
      */
     public function create()
     {
-        //
+        return view('panel.blogs.create');
     }
 
     /**
@@ -27,7 +29,19 @@ class BlogsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            "title" => ["required", "min:3"],
+            "body"=> ["required","min:5"],
+        ]);
+
+        Blogs::create([
+            "user_id" => 1,
+            "title" => $request->title,
+            "body" => $request->body
+        ]);
+
+        return redirect('/blogs');
     }
 
     /**
@@ -35,7 +49,9 @@ class BlogsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $blog = Blogs::find($id);
+
+        return view('panel.blogs.show', compact('blog'));
     }
 
     /**
@@ -43,7 +59,9 @@ class BlogsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $blog = Blogs::find($id);
+
+        return view('panel.blogs.edit', compact('blog'));
     }
 
     /**
@@ -51,7 +69,19 @@ class BlogsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            "title" => ["required", "min:3"],
+            "body"=> ["required","min:5", "max:2000"],
+        ]);
+
+        $blog = Blogs::findOrFail($id);
+        
+        $blog->update([
+            "title" => $request->title,
+            "body" => $request->body
+        ]);
+
+        return redirect("blogs/" . $blog->id);
     }
 
     /**
@@ -59,6 +89,10 @@ class BlogsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $blog = Blogs::findOrFail($id);
+
+        $blog->delete();
+
+        return redirect("/blogs");
     }
 }

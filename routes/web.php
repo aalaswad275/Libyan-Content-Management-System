@@ -77,8 +77,9 @@ Route::get('/projects', function () {
 });
 
 
-Route::resource('blog', App\Http\Controllers\BlogsController::class);
+Route::resource('blogs', App\Http\Controllers\BlogsController::class);
 Route::resource('Settings', App\Http\Controllers\GeneralController::class);
+Route::resource('link', App\Http\Controllers\LinksController::class);
 
 
 // Main Page Route

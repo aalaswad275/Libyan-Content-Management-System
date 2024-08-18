@@ -6,7 +6,7 @@
  * @license MIT
  -->
  <!DOCTYPE html>
- <html lang="IR-fa" dir="rtl">
+ <html lang="en" dir="ltr">
 
  <head>
      <meta charset="utf-8">
@@ -137,7 +137,7 @@
                              <a class="nav-link" href="components-tables.html"><i class="icon-puzzle"></i> Tables</a>
                          </li>
                      </ul>
-                 </li>-->
+                 </li>
 
                  <!--<li class="nav-item nav-dropdown">
                      <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Icons</a>
@@ -182,7 +182,7 @@
          </nav>
      </div>
      <!-- Main content -->
-     <main class="main">
+     <main class="main" style="height: inherit;">
 
          <!-- Breadcrumb -->
          @yield('content')
