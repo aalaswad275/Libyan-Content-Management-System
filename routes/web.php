@@ -143,3 +143,7 @@ Route::resource('Settings', App\Http\Controllers\GeneralController::class);
 
 // // tables
 // Route::get('/tables/basic', [TablesBasic::class, 'index'])->name('tables-basic');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
