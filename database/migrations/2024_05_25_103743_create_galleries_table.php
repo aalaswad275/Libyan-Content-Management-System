@@ -21,11 +21,11 @@ return new class extends Migration
 
             $table->string('cover_image'); // path to the cover image of the gallery
             $table->integer('user_id')->unsigned(); // foreign key referencing the users table
-            
+
             $table->timestamps();
             // add foreign key constraint
 
-            $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 
