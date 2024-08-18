@@ -31,6 +31,18 @@ audio:not([controls]) {
   display: none;
   height: 0; }
 
+.d-flex {
+    display: flex
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
 progress {
   vertical-align: baseline; }
 

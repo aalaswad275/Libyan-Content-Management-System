@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\General;
 use Illuminate\Http\Request;
 
 class GeneralController extends Controller
@@ -12,7 +12,8 @@ class GeneralController extends Controller
     public function index()
     {
         //
-     return view('panel.general.create');
+        $general = General::all();
+        return view('panel.general.index', compact('general'));
     }
 
     /**
