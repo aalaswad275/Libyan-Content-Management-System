@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Blogs;
 use Illuminate\Http\Request;
+use App\Models\Blog;
 
 class BlogsController extends Controller
 {
@@ -12,8 +13,10 @@ class BlogsController extends Controller
     public function index()
     {
         //
+
         $blog = Blogs::all();
         return view('panel.blogs.index', compact('blog'));
+
     }
 
     /**
@@ -21,6 +24,8 @@ class BlogsController extends Controller
      */
     public function create()
     {
+
+
         return view('panel.blogs.create');
     }
 

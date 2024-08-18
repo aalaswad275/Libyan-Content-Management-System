@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('description'); // description of the gallery
 
             $table->string('cover_image'); // path to the cover image of the gallery
+
             $table->foreignIdFor(User::class)->constrained(
                 table: 'users', indexName: 'gallery_user_id'
             )->cascadeOnDelete(); //->integer('user_id')->unsigned(); // foreign key referencing the users table
@@ -29,7 +30,7 @@ return new class extends Migration
             $table->timestamps();
             // add foreign key constraint
 
-            $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 

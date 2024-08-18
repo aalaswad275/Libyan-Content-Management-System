@@ -1,6 +1,5 @@
 @extends('layouts.test')
 
-
 @section('content')
     <form method="post" action="/blogs">
         @csrf
@@ -27,5 +26,4 @@
         @endforeach
     
     @endif
-
 @endsection
